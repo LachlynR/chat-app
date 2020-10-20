@@ -51,6 +51,9 @@ const io = require("socket.io")(server);
 io.on("connection", (socket) => {
   console.log(`User has connected`);
 
+socket.broadcast.emit("message", "A user has joined the chat")
+//!this msg will be visible to all the users except the user who has just connected
+
   socket.on("join", ({ username, room }) => {
     const { user } = addUser({ id: socket.id, username, room });
     socket.join(room);
