@@ -10,7 +10,11 @@ require("dotenv").config();
 
 //! FILES
 const socketRouter = require("./routes/socketRoutes");
-const { addUser, removeUser, getUser } = require('./controllers/socketController')
+const {
+  addUser,
+  removeUser,
+  getUser,
+} = require("./controllers/socketController");
 
 //! VARIABLES
 const PORT = process.env.PORT || 5000;
@@ -53,12 +57,11 @@ const io = require("socket.io")(server);
 io.on("connection", (socket) => {
   console.log(`User has connected`);
 
-socket.broadcast.emit("message", "A user has joined the chat")
-//!this msg will be visible to all the users except the user who has just connected
+  socket.broadcast.emit("message", "A user has joined the chat");
+  //!this msg will be visible to all the users except the user who has just connected
 
-  
   socket.on("join", ({ nickname, room }) => {
-    const { user } = addUser({ id: socket.id, name:nickname, room });
+    const { user } = addUser({ id: socket.id, name: nickname, room });
     socket.join(user.room);
 
     socket.emit("message", {
@@ -80,12 +83,12 @@ socket.broadcast.emit("message", "A user has joined the chat")
   });
 
   socket.on("disconnect", () => {
-    const user = removeUser(socket.id)
+    const user = removeUser(socket.id);
     if (user) {
-      io.to(user.room).emit('message', {
+      io.to(user.room).emit("message", {
         user: "admin",
-        text: `${user.name} has left the chat.`
-      })
+        text: `${user.name} has left the chat.`,
+      });
     }
   });
 });

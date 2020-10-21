@@ -4,6 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
 
   <style>
     * {
@@ -23,8 +24,9 @@
     }
 
     .join-header {
-      text-align: center;
       padding: 30px;
+      font-family: 'Merienda One', cursive;
+      font size: 1.5rem;
     }
 
     .main {
@@ -43,16 +45,17 @@
 
     .btns {
       display: flex;
+      justify-content: flex-start;
     }
 
     .form-content input[type="text"] {
       font-size: 16px;
-      padding: 5px;
+      padding: 0 1rem;
       height: 40px;
       width: 70%;
       border: none;
       border-radius: 10px;
-      background-color: blanchedalmond;
+      background-color: #ececec;
       color: black;
     }
 
@@ -66,13 +69,20 @@
 
     .form-content select {
       font-size: 16px;
-      padding: 5px;
+      padding: 0.5rem;
       height: 40px;
       width: 50%;
       border: none;
       border-radius: 10px;
-      background-color: blanchedalmond;
+      background-color: #ececec;
       color: black;
+      margin-bottom: 1rem;
+    }
+
+    .colorInput {
+      display: flex;
+      justify-content: space-between;
+      width: 10rem;
     }
 
     .form-content select:focus {
@@ -81,7 +91,8 @@
 
     .btns {
       display: flex;
-      justify-content: space-around;
+      justify-content: space-between;
+      width: 70%;
     }
 
     .button {
@@ -92,14 +103,14 @@
       font-size: 16px;
       cursor: pointer;
       border: none;
+      color: white;
       border-radius: 10px;
-      background-color: cornflowerblue;
+      background-color: rgb(38, 90, 185);
     }
-
-
 
     .join-header-info {
       font-style: italic;
+      font-size: 1.5rem;
     }
 
     h3 {
@@ -114,7 +125,7 @@
   <div class="join-container">
     <header class="join-header">
       <h1>Express Chat</h1>
-      <p class="join-header-info">It's unopinionated and fast</p>
+      <p class="join-header-info">It's unopinionated and fast...</p>
     </header>
 
     {{#if loggedIn}}
@@ -123,33 +134,34 @@
         <h2>Enter a room</h2>
       </div>
       <form action="/chat">
-        <div class="username">
-          <label for"username">Nickname:</label>
-          <input type="text" name="nickname" id="nickname" required placeholder="Enter username ..." />
+        <div class="form-content">
+          <label for"username">Nickname: </label>
+          <input type="text" name="nickname" id="nickname" placeholder="Enter nickname ..." required />
         </div>
         <div class="form-content">
-          <label for"room">Room</label>
+          <label for"room">Room: </label>
           <select name="room" id=" room">
-            <option value="" disabled selected>Select your option</option>
+            {{!-- <option value="" disabled selected>Select your option</option> --}}
             <option value="Code">Code</option>
             <option value="Music">Music</option>
             <option value="Fun">Fun</option>
             <option value="Events">Events</option>
-
           </select>
-          <label for="color">Chat Color</label>
-          <input type="color" name="color" id="color">
+          <div class="colorInput">
+            <label for="color">Chat Color: </label>
+            <input type="color" name="color" id="color">
+
+          </div>
+
         </div>
-
-        <div class="btns">
-          <button type="submit" class="button">Join Chat</button>
+        <button type="submit" class="button">Join Chat</button>
       </form>
+      <div class="btns">
+        <form action="/user/logout">
+          <input type="submit" class="button" value="Log out" />
+        </form>
+      </div>
 
-      <form action="/user/logout">
-        <input type="submit" class="button" value="Log out" />
-        <button type="submit" class="join-button">Join Chat</button>
-
-      </form>
       <div />
     </div>
     {{else}}

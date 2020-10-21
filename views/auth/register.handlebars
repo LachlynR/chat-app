@@ -9,24 +9,35 @@
       margin: 0;
       padding: 0;
       box-sizing: border-box;
+
+    }
+
+    body {
+
       background-color: #292929;
       color: rgb(255, 255, 255);
-
     }
 
     .register-container {
       max-width: 600px;
       margin: 60px auto;
-      background-color: bisque;
     }
 
     .join-header {
-      text-align: center;
       padding: 30px;
+      font-family: 'Merienda One', cursive;
+      font size: 2rem;
     }
+
+    .join-header h1 {
+      font-size: 4rem
+    }
+
+    
 
     .join-header-info {
       font-style: italic;
+      font-size: 1.5rem;
     }
 
     .form-content {
@@ -42,7 +53,7 @@
       width: 70%;
       border: none;
       border-radius: 10px;
-      background-color: blanchedalmond;
+      background-color: #ececec;
       color: black;
 
     }
@@ -54,7 +65,7 @@
       width: 70%;
       border: none;
       border-radius: 10px;
-      background-color: blanchedalmond;
+      background-color: #ececec;
       color: black;
     }
 
@@ -77,7 +88,8 @@
       cursor: pointer;
       border: none;
       border-radius: 10px;
-      background-color: cornflowerblue;
+      color: white;
+      background-color: rgb(37, 87, 180);
     }
   </style>
   <title>Login</title>
@@ -87,18 +99,18 @@
   <div class="register-container">
     <header class="join-header">
       <h1>Express Chat</h1>
-      <p class="join-header-info">It's unopinionated and fast</p>
+      <p class="join-header-info">It's unopinionated and fast...</p>
     </header>
 
 
     <form method="post" action="/user/register">
       <div class="form-content">
-        <label for"username">Username</label>
-        <input type="text" name="username" id="username" placeholder="Enter username ..." required />
+        <label for"username">Username: </label>
+        <input type="text" name="username" id="username" placeholder="Enter username..." required />
       </div>
       <div class="form-content">
-        <label> Password</label>
-        <input type="password" name="password" />
+        <label> Password: </label>
+        <input type="password" placeholder="Enter password..." name="password" />
       </div>
       <div>
         <input type="submit" class="button" value="Register">
